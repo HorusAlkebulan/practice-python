@@ -30,6 +30,8 @@ class Solution:
 
         #   key     3   1   4   5
         #   value   1   2   1   1
+        #           i
+
         # k = 2
         results = []
         for num in value_freq_map:
@@ -39,10 +41,21 @@ class Solution:
                     results.append([num, num])
             else:
                 # check for each num in the map, does the needed matching num exist
-                paring_needed = (num + k)
-                if paring_needed in value_freq_map:
-                    results.append([num, paring_needed])
-
+                # so, (num - x) must equal k or (num - x) must equal -k
+                # or, (3 - x) = 2 or (3 - x) = -2
+                # or, x = (3 - 2) or 3 + 2 = x
+                # or, x = 1 or x = 5
+                # rewriting in terms of vars
+                # so, (num - paring_needed) = k or (num - pairing_needed) = -k
+                # or, paring_needed = num - k or paring_needed = num + k
+                paring_needed_pos = (num - k)
+                paring_needed_neg = (num + k)
+                # if paring_needed_pos in value_freq_map:
+                #     results.append([num, paring_needed_pos])
+                # NOTE: Not sure why including both produces duplicates
+                if paring_needed_neg in value_freq_map:
+                    results.append([num, paring_needed_neg])
+        # print(f"results: {results}")
         results_count = len(results)
         return results_count
 
