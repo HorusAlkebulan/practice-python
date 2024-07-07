@@ -17,6 +17,34 @@ Constraints:
 
 class Solution:
     def isValid(self, s: str) -> bool:
+        # neetcode solution adjusting to my coding style
+        paren_stack = []
+        valid_pairs_map = {
+            "}": "{",
+            ")": "(",
+            "]": "[",
+        }
+
+        is_valid = False
+        for char in s:
+            if char in valid_pairs_map:
+                # NOTE: Top of the stack is stack[-1]
+                if len(paren_stack) > 0:
+                    pop_char = paren_stack.pop()
+                    if pop_char == valid_pairs_map[char]:
+                        is_valid = True
+                    else:
+                        return False
+                else:
+                    return False
+            else:
+                paren_stack.append(char)
+
+        # only valid if it stack is empty at this point
+        is_valid = (len(paren_stack) == 0)
+        return is_valid
+
+    def isValidApproach2(self, s: str) -> bool:
         # Approach 2: use stack for chars, hashmap to pair valid opening for closing
         if len(s) < 1:
             return False
