@@ -38,3 +38,11 @@ conda install -c pytorch torchtext
 ```bash
 conda install -c pytorch torchtext=0.8.1
 ```
+
+## Testing
+
+* Run all tests, showing locals, stopping on first error, first level verbose
+
+```bash
+pytest -l -x -v
+```
