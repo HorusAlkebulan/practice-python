@@ -30,7 +30,7 @@ class Node():
     def __str__(self) -> str:
         return str(self.element)
 
-class SingleLinkedList():
+class SinglyLinkedList():
     def __init__(self) -> None:
         self.head = None
         self.size = 0
@@ -91,6 +91,7 @@ class SingleLinkedList():
         # since singly linked, have to traverse the list
         if self.size == 1:
             self.head = None
+            self.tail = None
         else:
             # head -> ["10"] -> ["20"] -> ["30"] <- tail
             #           cur       next
@@ -102,7 +103,9 @@ class SingleLinkedList():
                 cur_node = next_node
                 next_node = cur_node.next
             new_tail = cur_node
+            new_tail.next = None
             self.tail = new_tail
+        self.size -= 1
         return popped_value
     
     def __contains__(self, item: any) -> bool:
@@ -118,18 +121,16 @@ class SingleLinkedList():
         return False
 
 
-    def __getitem__(self, item: any) -> Node:
+    def __getitem__(self, index: int) -> Node:
         if self.size == 0:
             raise IndexError("List is empty")
+        if index > self.size - 1:
+            raise IndexError(f"Invalid index: {index}")
         
         cur_node = self.head
-        while cur_node is not None:
-            if cur_node.element == item:
-                return cur_node
+        for _ in range(index):
             cur_node = cur_node.next
-        
-        # get this far, not found
-        raise IndexError(f"Item '{item}' not found in list")
+        return cur_node.element
 
     def __len__(self) -> int:
         return self.size
@@ -145,7 +146,7 @@ class SingleLinkedList():
 
 if __name__ == "__main__":
 
-    list = SingleLinkedList()
+    list = SinglyLinkedList()
     print(f"list: {list}")
     list.add_head(10)
     print(f"list: {list}")
@@ -153,3 +154,11 @@ if __name__ == "__main__":
     print(f"list: {list}")
     list.add_tail(30)  
     print(f"list: {list}") 
+    list.add_tail(40)  
+    print(f"list: {list}")
+    list.add_head(5)  
+    print(f"list: {list}")
+    list.remove_head()
+    print(f"after remove_head(), list: {list}")
+    list.remove_tail()
+    print(f"after remove_tail(), list: {list}")
