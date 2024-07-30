@@ -1,3 +1,6 @@
+
+# SOURCE: https://www.linkedin.com/learning/get-ready-for-your-coding-interview/code-solution-to-sample-question-3-14350161?autoSkip=true&contextUrn=urn%3Ali%3AlearningCollection%3A7221626326309322752&resume=false&u=0
+
 def rooks_are_safe(chessboard):
     # idea: basically all columns and row must be 0 or 1
     square_size = len(chessboard[0])
