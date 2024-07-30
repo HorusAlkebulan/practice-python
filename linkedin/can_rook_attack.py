@@ -37,3 +37,21 @@ if __name__ == "__main__":
     expected = False
     print(f"chessboard: {chessboard}, result: {result}, expected: {expected}")
     assert result == expected
+
+    chessboard = [[1]]
+    result = rooks_are_safe(chessboard)
+    expected = True
+    print(f"chessboard: {chessboard}, result: {result}, expected: {expected}")
+    assert result == expected
+
+    chessboard = [[1, 0], [1, 0]]
+    result = rooks_are_safe(chessboard)
+    expected = False
+    print(f"chessboard: {chessboard}, result: {result}, expected: {expected}")
+    assert result == expected
+
+    chessboard = [[0, 0, 0], [1, 0, 1], [0, 0, 0]]
+    result = rooks_are_safe(chessboard)
+    expected = False
+    print(f"chessboard: {chessboard}, result: {result}, expected: {expected}")
+    assert result == expected
