@@ -1,4 +1,5 @@
 # practice-python
+
 Practice sandbox for python based code
 
 ## Initial setup on mac
@@ -22,21 +23,14 @@ After installing, initialize your newly-installed Miniconda. The following comma
 2. create environment
 
 ```bash
-conda create -n pytorch pytorch
-conda activate pytorch 
+conda create -n practice-python python=3.10
+conda activate practice-python
 ```
 
 3. install pytorch and any other needed tools
 
 ```bash
-conda install jupyter_core -c conda-forge
-conda install -c pytorch torchtext
-```
-
-4. installing legacy capable TREC
-
-```bash
-conda install -c pytorch torchtext=0.8.1
+pip install -r requirements.txt
 ```
 
 ## Testing
