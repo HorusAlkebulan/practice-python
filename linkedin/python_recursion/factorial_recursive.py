@@ -18,7 +18,7 @@ def factorial_recursive_while(n):  # Condition-controlled version
     # initial conditions
     result = 1
 
-    result = factorial_recursive(n, result)
+    result = result * factorial_recursive(n)
 
     # n = 1
     # result = factorial_recursive(n=1, result=1)
@@ -29,20 +29,19 @@ def factorial_recursive_while(n):  # Condition-controlled version
     return result
 
 
-def factorial_recursive(n, result):
+def factorial_recursive(n):
 
     # base case to exit
     if n <= 1:
-        return result
+        return 1
 
     # take action
-    result = result * n  # 1 * 2 = 2
 
     # move towards base case
-    n = n - 1  # 1
+    recurse_n = n - 1  # 1
 
     # recursive call
-    result = factorial_recursive(n, result)
+    result = n * factorial_recursive(recurse_n)
     return result
 
 
