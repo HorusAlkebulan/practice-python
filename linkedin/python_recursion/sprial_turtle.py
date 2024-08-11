@@ -4,6 +4,7 @@ from turtle import Turtle
 MAX_LENGTH = 250
 INCREMENT = 10
 
+
 def draw_spiral(turtle: Turtle, line_length: int):
     # base case
     if line_length > MAX_LENGTH:
@@ -11,13 +12,14 @@ def draw_spiral(turtle: Turtle, line_length: int):
 
     # take action
     turtle.forward(line_length)
-    turtle.right(90)    
+    turtle.right(90)
 
     # movement towards base case
     line_length += INCREMENT
 
     # recursive call
     draw_spiral(turtle, line_length)
+
 
 # initial conditions
 charlie = Turtle(shape="turtle")
