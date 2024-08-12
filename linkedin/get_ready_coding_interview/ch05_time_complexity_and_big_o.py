@@ -38,7 +38,17 @@ if __name__ == "__main__":
         [ 1,  2,  4, 5]]
     expected = 6
     result = count_negatives(given_array)
+    assert result == expected, f"result: {result}, expected: {expected}, locals(): {locals()}"
 
+    given_array = [[-2, 0],
+        [-1, 0]]
+    expected = 2
+    result = count_negatives(given_array)
+    assert result == expected, f"result: {result}, expected: {expected}, locals(): {locals()}"
+
+    given_array = [[0]]
+    expected = 0
+    result = count_negatives(given_array)
     assert result == expected, f"result: {result}, expected: {expected}, locals(): {locals()}"
 
     print("All tests pass.")
