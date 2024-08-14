@@ -1,6 +1,7 @@
 # SOURCE: https://www.linkedin.com/learning/python-data-structures-stacks-deques-and-queues/code-challenges/urn:li:la_assessmentV2:58453865?autoSkip=true&contextUrn=urn%3Ali%3AlearningCollection%3A7221626326309322752&resume=false&u=0
 import pytest
 
+
 # Python code​​​​​​‌​‌‌‌​​‌​​​‌‌​‌​​‌‌‌‌‌​‌​ below
 # Define a node class for the linked list
 class Node:
@@ -13,60 +14,105 @@ class Node:
 class Stack:
     def __init__(self):
         self.head: Node = None  # The head node of the linked list
-        self.top: Node = None
-        
 
     def push(self, data):
         new_node = Node(data)
-        if self.head is None:
-            # new linked list
-            self.head = new_node
-            self.top = new_node
-        else:
-            # add to existing linked list
-            current_top = self.top
-            self.top = new_node
-            current_top.next = new_node
+        new_node.next = self.head
+        self.head = new_node
 
     def pop(self):
         # CASE 1: stack is empty
         if self.head is None:
             raise IndexError("Empty stack")
-        
-        # CASE 2: stack has one item
-        if self.head == self.top:
-            old_top = self.top
-            self.head = None
-            self.top = None
-            return old_top.data
-
-        # CASE 3: more than one item
-        # starting with head, keep calling next until current_node.next is top
-        current_node = self.head
-        while current_node is not None and current_node.next != self.top:
-            current_node = current_node.next
 
         # save the top to return it
-        old_top = self.top
+        top_data = self.head.data
 
         # make current_node the new top
-        self.top = current_node
+        self.head = self.head.next
 
         # return the saved top
-        return old_top.data
+        return top_data
 
     def peek(self):
         if self.head is None:
             raise IndexError("Empty stack")
-        return self.top.data
+        return self.head.data
 
     def isEmpty(self):
-        return (self.head is None)
+        return self.head is None
+    
+    def __repr__(self) -> str:
+        """repr, on the other hand, is used to return a string representation of an object 
+        that is a valid Python expression, which can be used to recreate the object. 
+        This is typically used for debugging, logging, or serializing the object.
+
+        class Person:
+            def __init__(self, name, age):
+                self.name = name
+                self.age = age
+
+            def __repr__(self):
+                return f"Person('{self.name}', {self.age})"
+
+        p = Person("John", 30)
+        print(repr(p))  # Output: Person('John', 30)
+        """
+
+        if self.head is None:
+            return ""
+        
+        current_node = self.head
+        repr = ""
+        i = 0
+        items = []
+
+        while current_node is not None:
+            items.append(current_node.data)
+            i += 1
+            current_node = current_node.next
+
+        while i >= 0:
+            repr = repr + f"Stack().push({items[i]})\n"
+            i -= 1
+        return repr
+    
+    def __str__(self) -> str:
+        """str is used to return a string representation of an object that is 
+        human-readable and suitable for display to the end-user. 
+        This is typically used for printing or displaying the object 
+        in a user-friendly format.
+
+        class Person:
+            def __init__(self, name, age):
+                self.name = name
+                self.age = age
+
+            def __str__(self):
+                return f"{self.name}, {self.age} years old"
+
+        p = Person("John", 30)
+        print(str(p))  # Output: John, 30 years old
+        """
+
+        if self.head is None:
+            return ""
+        current_node = self.head
+        str = ""
+        i = 0
+        while current_node is not None:
+            if i == 0:
+                str = str + f"{current_node.data} <-- top\n"
+            else:
+                str = str + f"{current_node.data}\n"
+            i += 1
+            current_node = current_node.next
+        return str
 
 
 # Define a function that checks if a string is a palindrome using a stack
 def isPalindrome(string):
-    
+
     i = 0
     stack = Stack()
     clean_string = ""
@@ -78,18 +124,22 @@ def isPalindrome(string):
     string = str(string).lower()
     while i < len(string):
         char = string[i]
-        if char >= "a" and char <= "z":
+        if char >= "a" and char <= "z": # or c.isalnum()
             stack.push(char)
-            clean_string = clean_string + char
+            clean_string = clean_string + char # or use "".join(c for c in string if c.isalum())
         i += 1
+
+    print(f"Stack after pushing string:\n{stack}")
 
     # pop all chars while iterating over string (chars should always match)
     while not stack.isEmpty():
         char = stack.pop()
         popped_string = popped_string + char
 
-    strings_match = (clean_string == popped_string)
-    return strings_match 
+    strings_match = clean_string == popped_string
+    print(f"stack.str:\n{stack.__str__()}")
+    print(f"repr:\n{stack.__repr__()}")
+    return strings_match
 
 
 showExpectedResult = False
@@ -104,20 +154,23 @@ class Answer:
     def isPalindrome(string):
         return isPalindrome(string)
 
+
 def test_is_empty_true():
-    
+
     stack = Stack()
     result = stack.isEmpty()
     expected = True
     assert result == expected
 
+
 def test_is_empty_false():
-    
+
     stack = Stack()
     stack.push("r")
     result = stack.isEmpty()
     expected = False
     assert result == expected
+
 
 # @pytest.mark.skip(reason="Stack not finished")
 def test_ex1():
@@ -130,6 +183,7 @@ def test_ex1():
     expected = True
     assert result == expected
 
+
 def test_ex2():
 
     # This is how your code will be called.
@@ -140,6 +194,7 @@ def test_ex2():
     expected = False
     assert result == expected
 
+
 def test_add_one_pop_one_is_empty():
 
     stack = Stack()
@@ -148,6 +203,7 @@ def test_add_one_pop_one_is_empty():
     assert top == "r"
     assert stack.isEmpty()
 
+
 def test_push_two_peek():
 
     stack = Stack()
@@ -155,3 +211,5 @@ def test_push_two_peek():
     stack.push("a")
     top = stack.peek()
     assert top == "a"
+
+test_ex1()
