@@ -7,6 +7,7 @@ class Queue:
         self.tail_idx = -1
 
     def enqueue(self, data: tuple):
+        # NOTE: Alternative --> don't track head and tail. use list.pop(index) methods. use 0 for head, -1 for tail
         if self.isEmpty():
             # empty list
             self.head_idx = 0
