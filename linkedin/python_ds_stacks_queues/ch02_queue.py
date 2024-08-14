@@ -32,13 +32,13 @@ class Queue:
         return self.list[self.tail_idx]
 
     def size(self):
-        if self.isEmpty():
+        if self.head_idx < 0 or self.tail_idx < 0:
             return 0
         else:
             return (self.tail_idx - self.head_idx + 1)
 
     def isEmpty(self):
-        return (self.tail_idx < 0)
+        return (self.size() == 0)
         
 
 
@@ -49,9 +49,21 @@ class Queue:
 
 # Define a function that simulates the printing process using a queue
 def printDocuments(documents):
-    # TODO: Implement the printing function
-    pass
-
+    # queue up each document in order
+    # dequeue each document until empty, each time adding to output list
+    # return output list report
+    queue = Queue()
+    print_report_ls = []
+    for document in documents:
+        queue.enqueue(document)
+    while not queue.isEmpty():
+        document = queue.dequeue()
+        name = document[0]
+        pages = document[1]
+        print_time = pages * 0.5
+        report = f"Document {name} printed in {print_time} minutes"
+        print_report_ls.append(report)
+    return print_report_ls
 
 showExpectedResult = False
 showHints = False
