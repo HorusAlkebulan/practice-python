@@ -40,3 +40,12 @@ pip install -r requirements.txt
 ```bash
 pytest -l -x -v
 ```
+
+* Run tests with coverage
+
+```bash
+pytest --cov=ch01_stack.py -v
+pytest --cov=<your_module_or_package> --cov-report=term-missing --cov-fail-under=90
+pytest test.py --cov=sample.py --cov-report=
+coverage report -m
+```
