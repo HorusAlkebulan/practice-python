@@ -66,8 +66,30 @@ class Stack:
 
 # Define a function that checks if a string is a palindrome using a stack
 def isPalindrome(string):
-    # TODO: Implement the palindrome checker function
-    return False
+    
+    i = 0
+    stack = Stack()
+    clean_string = ""
+    popped_string = ""
+    if len(string) == 0:
+        return False
+
+    # push chars to stack (skipping non-ascii)
+    string = str(string).lower()
+    while i < len(string):
+        char = string[i]
+        if char >= "a" and char <= "z":
+            stack.push(char)
+            clean_string = clean_string + char
+        i += 1
+
+    # pop all chars while iterating over string (chars should always match)
+    while not stack.isEmpty():
+        char = stack.pop()
+        popped_string = popped_string + char
+
+    strings_match = (clean_string == popped_string)
+    return strings_match 
 
 
 showExpectedResult = False
@@ -97,7 +119,7 @@ def test_is_empty_false():
     expected = False
     assert result == expected
 
-@pytest.mark.skip(reason="Stack not finished")
+# @pytest.mark.skip(reason="Stack not finished")
 def test_ex1():
 
     # This is how your code will be called.
@@ -106,6 +128,16 @@ def test_ex1():
     string = "race-car!!"
     result = Answer.isPalindrome(string)
     expected = True
+    assert result == expected
+
+def test_ex2():
+
+    # This is how your code will be called.
+    # Your answer should be the largest value in the numbers list.
+    # You can edit this code to try different testing cases.
+    string = "race-cars!!"
+    result = Answer.isPalindrome(string)
+    expected = False
     assert result == expected
 
 def test_add_one_pop_one_is_empty():
@@ -123,4 +155,3 @@ def test_push_two_peek():
     stack.push("a")
     top = stack.peek()
     assert top == "a"
-    
