@@ -18,7 +18,8 @@ def flip_doors(num_doors: int):
         for i in range(start, num_doors, step):
 
             # flip door
-            door_state[i] = (True if door_state[i] == False else False)
+            # door_state[i] = (True if door_state[i] == False else False)
+            door_state[i] = not door_state[i]
             big_o_count += 1
 
     print(f"big_o_count: {big_o_count}, door_state: {door_state}")
