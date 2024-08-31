@@ -1,5 +1,5 @@
 # test_selection_sort.py
-from selecton_sort import selection_sort
+from selection_sort import selection_sort
 
 def test_single_value():
 
