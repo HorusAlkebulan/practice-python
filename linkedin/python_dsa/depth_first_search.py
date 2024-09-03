@@ -1,12 +1,24 @@
 
-from stack import Stack
+# from stack import Stack
+from stack_authors import Stack
+
+HR = "\n----------------------------------------------------------------"
+offsets = {
+    "right": (0, 1),
+    "left": (0, -1),
+    "up": (-1, 0),
+    "down": (1, 0)
+}
 
 def get_path(predecessors: dict, start_cell: tuple, current_cell: tuple) -> list:
-    path_lst = [current_cell]
-    while predecessor is not None and current_cell != start_cell:
-        predecessor = predecessors[current_cell]
-        path_lst.append(predecessor)
-    return path_lst
+    current = current_cell
+    path = []
+    while current != start_cell:
+        path.append(current)
+        current = predecessors[current]
+    path.append(start_cell)
+    path.reverse()
+    return path
 
 def is_visitable_cell(maze: list, current_cell: tuple) -> bool:
     # get cell boundaries
@@ -34,14 +46,15 @@ def dfs(maze: list, start_pos: tuple, goal_pos: tuple) -> list:
 
     # algorithm
     while not stack.is_empty():
+        print(HR)
+
         # pop the stack
         current_cell = stack.pop()
 
         # is this the goal?
         if current_cell == goal_pos:
             # if yes, return success
-            success_path = get_path(predecessors, start_pos, current_cell)
-            return success_path
+            return get_path(predecessors, start_pos, current_cell)
         else:
             # otherwise, push unvisited neighbors on to the stack and predecessors map
             # convention: start at 12 o'clock and go clockwise
@@ -49,7 +62,13 @@ def dfs(maze: list, start_pos: tuple, goal_pos: tuple) -> list:
             for direction in directions:
                 neighboring_cell: tuple = (current_cell[0] + direction[0], current_cell[1] + direction[1])
                 if is_visitable_cell(maze, neighboring_cell) and neighboring_cell not in predecessors:
+                    print(f"- Pushing neighbor {neighboring_cell} on the stack, logging it's preceeded by as {current_cell}")
                     stack.push(neighboring_cell)
                     predecessors[neighboring_cell] = current_cell 
+                    print(f"-- stack: {stack}")
+                    print(f"-- predecessors: {predecessors}")
 
+        print(f"After processing current_cell as {current_cell}:")
+        print(f"stack: {stack}")
+        print(f"predecessors: {predecessors}")
     return None

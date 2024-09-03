@@ -37,6 +37,10 @@ class Stack:
         else:
             return False
 
+    def size(self) -> int:
+        return self.top_idx + 1
+    
+    
     def __str__(self) -> str:
         if self.is_empty():
             return "[]"
@@ -50,4 +54,13 @@ class Stack:
             return str_rep
         
     def __repr__(self) -> str:
-        return self.__str__()
+        if self.is_empty():
+            return "[]"
+        else:
+            str_rep = ""
+            for i in range(0, self.top_idx + 1):
+                if i == 0:
+                    str_rep += str(self.items[i])
+                else:
+                    str_rep += f",{str(self.items[i])}"
+            return str_rep
