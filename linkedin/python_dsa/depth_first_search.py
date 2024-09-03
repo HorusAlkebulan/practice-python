@@ -1,6 +1,6 @@
 
-# from stack import Stack
-from stack_authors import Stack
+from stack import Stack
+# from stack_authors import Stack
 
 HR = "\n----------------------------------------------------------------"
 offsets = {

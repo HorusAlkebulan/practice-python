@@ -7,7 +7,8 @@ def test_peek_empty_error():
     int_stack = Stack()
     with pytest.raises(IndexError) as e:
         _ = int_stack.peek()
-    assert str(e.value) == "Empty stack" 
+    # assert str(e.value) == "Empty stack" 
+    assert str(e.value) == "list index out of range"
 
 def test_std_library_stack_pop_empty():
     node_stack: list = []
@@ -22,8 +23,8 @@ def test_push_1():
     int_stack = Stack()
     int_stack.push(1)
     stack_str = str(int_stack)
-    # expected = "[1]"
-    expected = "[1 <class 'int'>]"
+    expected = "[1]"
+    # expected = "[1 <class 'int'>]"
     assert stack_str == expected
 
 def test_push_2():
@@ -31,8 +32,8 @@ def test_push_2():
     int_stack.push(1)
     int_stack.push(2)
     stack_str = str(int_stack)
-    # expected = "[1],[2]"
-    expected = "[1 <class 'int'>],[2 <class 'int'>]"
+    expected = "[1], [2]"
+    # expected = "[1 <class 'int'>],[2 <class 'int'>]"
     assert stack_str == expected
 
 def test_push_3_pop_1():
@@ -45,8 +46,8 @@ def test_push_3_pop_1():
     assert top == expected
 
     stack_str = str(int_stack)
-    # expected = "[1],[2]"
-    expected = "[1 <class 'int'>],[2 <class 'int'>]"
+    expected = "[1], [2]"
+    # expected = "[1 <class 'int'>],[2 <class 'int'>]"
     assert stack_str == expected    
 
 def test_push_4_tuples():

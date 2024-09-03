@@ -3,64 +3,49 @@ from node import Node
 
 class Stack:
     def __init__(self):
-        super().__init__()
-        self.items: list = []
-        self.top_idx: int = -1
+        self.items = []
 
+    def is_empty(self) -> bool:
+        return len(self.items) == 0
+    
     def push(self, item: any) -> None:
 
         #   [1, 2, 3, 4]
         #             ^
         #             top
-        node = Node(item)
-        self.items.append(node)
-        self.top_idx += 1
-
+        self.items.append(item)
+    
     def pop(self) -> any:
-        if self.top_idx == -1:
-            raise IndexError("Empty stack")
-        else:
-            top_node = self.items[self.top_idx]
-            self.top_idx -= 1
-            return top_node.data
+        top_node = self.items.pop()
+        return top_node
 
     def peek(self) -> any:
-        if self.top_idx == -1:
-            raise IndexError("Empty stack")
-        else:
-            top_node = self.items[self.top_idx]
-            return top_node.data
-
-    def is_empty(self) -> bool:
-        if self.top_idx == -1:
-            return True
-        else:
-            return False
+        top_node = self.items[-1]
+        return top_node
 
     def size(self) -> int:
-        return self.top_idx + 1
-    
-    
+        return len(self.items)
+
     def __str__(self) -> str:
         if self.is_empty():
             return "[]"
         else:
             str_rep = ""
-            for i in range(0, self.top_idx + 1):
+            for i, item in enumerate(self.items):
                 if i == 0:
-                    str_rep += str(self.items[i])
+                    str_rep += f"[{str(item)}]"
                 else:
-                    str_rep += f",{str(self.items[i])}"
+                    str_rep += f", [{item}]"
             return str_rep
-        
+
     def __repr__(self) -> str:
         if self.is_empty():
             return "[]"
         else:
-            str_rep = ""
-            for i in range(0, self.top_idx + 1):
+            str_rep = f"Count: {len(self.items)}, Contents: "
+            for i, item in enumerate(self.items):
                 if i == 0:
-                    str_rep += str(self.items[i])
+                    str_rep += f"[{str(item)}]"
                 else:
-                    str_rep += f",{str(self.items[i])}"
+                    str_rep += f", [{item}]"
             return str_rep

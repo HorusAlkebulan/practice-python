@@ -6,7 +6,7 @@ PROJECT_ROOT = os.path.dirname(__file__)
 
 def read_maze(file_path):
 
-    print("Loading maze file: {file_path}")
+    print(f"Loading maze file: {file_path}")
 
     with open(file_path, mode="r") as f:
         maze = []
