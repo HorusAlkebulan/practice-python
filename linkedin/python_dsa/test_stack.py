@@ -46,5 +46,32 @@ def test_push_3_pop_1():
     expected = "[1],[2]"
     assert stack_str == expected    
 
+def reverse_string(string: str) -> str:
+    char_stack = Stack()
+    for idx in range(len(string)):
+        char_stack.push(string[idx])
+    output = ""
+    for i in range(len(string)):
+        output += str(char_stack.pop())
+    return output
+
+def test_reverse_string_1_char():
+    test_string = "x"
+    result = reverse_string(test_string)
+    expected = "x"
+    assert result == expected
+
+def test_reverse_string_2_chars():
+    test_string = "xy"
+    result = reverse_string(test_string)
+    expected = "yx"
+    assert result == expected
+
+def test_reverse_string_many_chars():
+    test_string = "gninraeL nIdekniL htiw tol a nraeL"
+    result = reverse_string(test_string)
+    expected = "Learn a lot with LinkedIn Learning"
+    assert result == expected
+
 if __name__ == "__main__":
     test_push_3_pop_1()
