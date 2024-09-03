@@ -48,3 +48,6 @@ class Stack:
                 else:
                     str_rep += f",{str(self.items[i])}"
             return str_rep
+        
+    def __repr__(self) -> str:
+        return self.__str__()
