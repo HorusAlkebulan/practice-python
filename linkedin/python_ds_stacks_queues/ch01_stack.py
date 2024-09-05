@@ -41,10 +41,10 @@ class Stack:
 
     def isEmpty(self):
         return self.head is None
-    
+
     def __repr__(self) -> str:
-        """repr, on the other hand, is used to return a string representation of an object 
-        that is a valid Python expression, which can be used to recreate the object. 
+        """repr, on the other hand, is used to return a string representation of an object
+        that is a valid Python expression, which can be used to recreate the object.
         This is typically used for debugging, logging, or serializing the object.
 
         class Person:
@@ -61,7 +61,7 @@ class Stack:
 
         if self.head is None:
             return ""
-        
+
         current_node = self.head
         repr = ""
         i = 0
@@ -76,11 +76,11 @@ class Stack:
             repr = repr + f"Stack().push({items[i]})\n"
             i -= 1
         return repr
-    
+
     def __str__(self) -> str:
-        """str is used to return a string representation of an object that is 
-        human-readable and suitable for display to the end-user. 
-        This is typically used for printing or displaying the object 
+        """str is used to return a string representation of an object that is
+        human-readable and suitable for display to the end-user.
+        This is typically used for printing or displaying the object
         in a user-friendly format.
 
         class Person:
@@ -124,9 +124,11 @@ def isPalindrome(string):
     string = str(string).lower()
     while i < len(string):
         char = string[i]
-        if char >= "a" and char <= "z": # or c.isalnum()
+        if char >= "a" and char <= "z":  # or c.isalnum()
             stack.push(char)
-            clean_string = clean_string + char # or use "".join(c for c in string if c.isalum())
+            clean_string = (
+                clean_string + char
+            )  # or use "".join(c for c in string if c.isalum())
         i += 1
 
     print(f"Stack after pushing string:\n{stack}")
@@ -211,5 +213,6 @@ def test_push_two_peek():
     stack.push("a")
     top = stack.peek()
     assert top == "a"
+
 
 test_ex1()

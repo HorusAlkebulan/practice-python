@@ -2,6 +2,7 @@
 
 from typing import List
 
+
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
         l = 0
@@ -18,8 +19,9 @@ class Solution:
             elif cur_sum < target:
                 l += 1
             else:
-                return [l+1, r+1]
+                return [l + 1, r + 1]
         return []
+
 
 def test_ex1():
     numbers = [1, 3, 4, 5, 7, 11]

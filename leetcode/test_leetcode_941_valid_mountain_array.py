@@ -14,6 +14,7 @@ from typing import List
 # peak
 #        i      i+1
 
+
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
         print(f"validMountainArray({arr})")
@@ -63,6 +64,7 @@ def valid_mountain(
         return False
     else:
         return True
+
 
 def valid_mountain_with_log(arr: List[int], start: int, end: int) -> bool:
 
@@ -170,11 +172,13 @@ def test_example_5():
     expected = False
     base_test_example(arr, expected)
 
+
 def test_example_6():
     # only increasing
-    arr = [0,1,2,3,4,5,6,7,8,9]
+    arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     expected = False
     base_test_example(arr, expected)
+
 
 if __name__ == "__main__":
 

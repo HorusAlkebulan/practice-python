@@ -21,7 +21,7 @@ class Queue:
     def dequeue(self):
         if self.isEmpty():
             raise IndexError("Empty queue.")
-        
+
         dequeued_item = self.list[self.head_idx]
         self.head_idx += 1
         return dequeued_item
@@ -36,11 +36,10 @@ class Queue:
         if self.head_idx < 0 or self.tail_idx < 0:
             return 0
         else:
-            return (self.tail_idx - self.head_idx + 1)
+            return self.tail_idx - self.head_idx + 1
 
     def isEmpty(self):
-        return (self.size() == 0)
-        
+        return self.size() == 0
 
 
 # class Document():
@@ -66,6 +65,6 @@ def printDocuments(documents):
         print_report_ls.append(report)
     return print_report_ls
 
+
 showExpectedResult = False
 showHints = False
-

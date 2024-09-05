@@ -19,12 +19,20 @@ class Solution:
         j = len(s) - 1
         while i < len(s) and j > 0:
             # if char is non-alpha, skip it by incrementing only
-            is_alpha = (s[i] >= "a" and s[i] <= "z") or (s[i] >= "A" and s[i] <= "Z") or (s[i] >= "0" and s[i] <= "9")
+            is_alpha = (
+                (s[i] >= "a" and s[i] <= "z")
+                or (s[i] >= "A" and s[i] <= "Z")
+                or (s[i] >= "0" and s[i] <= "9")
+            )
             if not is_alpha:
                 i += 1
                 continue
 
-            is_alpha = (s[j] >= "a" and s[j] <= "z") or (s[j] >= "A" and s[j] <= "Z") or (s[j] >= "0" and s[j] <= "9")
+            is_alpha = (
+                (s[j] >= "a" and s[j] <= "z")
+                or (s[j] >= "A" and s[j] <= "Z")
+                or (s[j] >= "0" and s[j] <= "9")
+            )
             if not is_alpha:
                 j -= 1
                 continue

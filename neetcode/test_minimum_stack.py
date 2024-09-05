@@ -1,14 +1,14 @@
 # test_minimum_stack.py
 
-class StackNode:
 
+class StackNode:
     def __init__(self, val: int):
         self.value = val
         self.prev = None
         self.next = None
 
-class MinStack:
 
+class MinStack:
     def __init__(self):
         self.top: StackNode = None
         self.min: StackNode = None
@@ -17,7 +17,7 @@ class MinStack:
         new_node = StackNode(val)
         if self.top is None:
             self.top = new_node
-            self.min = new_node 
+            self.min = new_node
         else:
             if new_node.value < self.min.value:
                 # new minimum node

@@ -22,7 +22,8 @@ head -> ["10"] -> ["20"] -> ["30"] -> tail
 
 """
 
-class Node():
+
+class Node:
     def __init__(self, element: any, next: any) -> None:
         self.element: any = element
         self.next: Node = next
@@ -30,7 +31,8 @@ class Node():
     def __str__(self) -> str:
         return str(self.element)
 
-class SinglyLinkedList():
+
+class SinglyLinkedList:
     def __init__(self) -> None:
         self.head = None
         self.size = 0
@@ -71,7 +73,7 @@ class SinglyLinkedList():
         """
         if self.size == 0:
             return None
-        
+
         popped_value = self.head.element
         new_head = self.head.next
         self.head = new_head
@@ -82,10 +84,10 @@ class SinglyLinkedList():
         """
         head -> ["10"] -> ["20"] -> ["30"] <- tail
         head -> ["10"] -> ["20"] <- tail
-        """     
+        """
         if self.size == 0:
-            return 
-        
+            return
+
         popped_value = self.tail.element
 
         # since singly linked, have to traverse the list
@@ -107,11 +109,11 @@ class SinglyLinkedList():
             self.tail = new_tail
         self.size -= 1
         return popped_value
-    
+
     def __contains__(self, item: any) -> bool:
         if self.size == 0:
             return False
-        
+
         cur_node = self.head
         while cur_node is not None:
             if cur_node.element == item:
@@ -120,13 +122,12 @@ class SinglyLinkedList():
 
         return False
 
-
     def __getitem__(self, index: int) -> Node:
         if self.size == 0:
             raise IndexError("List is empty")
         if index > self.size - 1:
             raise IndexError(f"Invalid index: {index}")
-        
+
         cur_node = self.head
         for _ in range(index):
             cur_node = cur_node.next
@@ -134,7 +135,7 @@ class SinglyLinkedList():
 
     def __len__(self) -> int:
         return self.size
-    
+
     def __str__(self) -> str:
         cur_node = self.head
         contents_lst = []
@@ -144,6 +145,7 @@ class SinglyLinkedList():
 
         return f"head: {self.head}, tail: {self.tail}, size: {self.size}, contents: {str(contents_lst)}"
 
+
 if __name__ == "__main__":
 
     list = SinglyLinkedList()
@@ -152,11 +154,11 @@ if __name__ == "__main__":
     print(f"list: {list}")
     list.add_tail(20)
     print(f"list: {list}")
-    list.add_tail(30)  
-    print(f"list: {list}") 
-    list.add_tail(40)  
+    list.add_tail(30)
     print(f"list: {list}")
-    list.add_head(5)  
+    list.add_tail(40)
+    print(f"list: {list}")
+    list.add_head(5)
     print(f"list: {list}")
     list.remove_head()
     print(f"after remove_head(), list: {list}")

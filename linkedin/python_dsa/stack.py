@@ -7,14 +7,14 @@ class Stack:
 
     def is_empty(self) -> bool:
         return len(self.items) == 0
-    
+
     def push(self, item: any) -> None:
 
         #   [1, 2, 3, 4]
         #             ^
         #             top
         self.items.append(item)
-    
+
     def pop(self) -> any:
         top_node = self.items.pop()
         return top_node

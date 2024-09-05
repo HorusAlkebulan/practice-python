@@ -1,4 +1,3 @@
-
 def solution_brute_force(arr, k):
 
     # ASSUMES VALID INPUTS
@@ -25,6 +24,7 @@ def solution_brute_force(arr, k):
     # return kth element
     return sorted_arr[k - 1]
 
+
 def solution_optimized(arr, k):
     pass
 
@@ -37,6 +37,7 @@ def test_ex1_brute_force():
     actual = solution_brute_force(arr, k)
     assert actual == expected
 
+
 def test_ex2_brute_force():
 
     arr = [4, 2, 5, 5]
@@ -45,6 +46,7 @@ def test_ex2_brute_force():
     actual = solution_brute_force(arr, k)
     assert actual == expected
 
+
 def test_ex1_optimized():
 
     arr = [1, 2, 3, 5]
@@ -52,6 +54,7 @@ def test_ex1_optimized():
     expected = 6
     actual = solution_optimized(arr, k)
     assert actual == expected
+
 
 def test_ex2_optimized():
 

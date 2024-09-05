@@ -1,8 +1,9 @@
 import os
 import os
-import pytest 
+import pytest
 
 PROJECT_ROOT = os.path.dirname(__file__)
+
 
 def read_maze(file_path):
 
@@ -20,8 +21,11 @@ def read_maze(file_path):
             if file_maze_row_count == maze_row_col_count:
                 maze.append(maze_row)
             else:
-                raise OSError(f"Maze is not rectangular: rows={file_maze_row_count}, columns={maze_row_col_count}")
+                raise OSError(
+                    f"Maze is not rectangular: rows={file_maze_row_count}, columns={maze_row_col_count}"
+                )
     return maze
+
 
 if __name__ == "__main__":
 

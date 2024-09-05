@@ -1,10 +1,10 @@
 def make_change(amount: float):
-    # given values of 
+    # given values of
     # 1, 2, 5, 10, 20, 50p
     # 1, 2 pounds
     denominations = {
         0.01: "1p",
-        0.02: "2p", 
+        0.02: "2p",
         0.05: "5p",
         0.10: "10p",
         0.20: "20p",
@@ -19,7 +19,7 @@ def make_change(amount: float):
         0.20,
         0.10,
         0.05,
-        0.02, 
+        0.02,
         0.01,
     ]
     change_remaining = amount

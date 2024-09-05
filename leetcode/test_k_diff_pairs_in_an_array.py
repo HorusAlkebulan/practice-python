@@ -1,6 +1,7 @@
 # 532. K-diff Pairs in an Array
 from typing import List
 
+
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
         """
@@ -16,10 +17,10 @@ class Solution:
 
         if k < 0:
             return 0
-        
+
         # ex
         #   3   1   4   1   5
-        
+
         # store counts of each unique value
         value_freq_map = {}
         for num in nums:
@@ -48,8 +49,8 @@ class Solution:
                 # rewriting in terms of vars
                 # so, (num - paring_needed) = k or (num - pairing_needed) = -k
                 # or, paring_needed = num - k or paring_needed = num + k
-                paring_needed_pos = (num - k)
-                paring_needed_neg = (num + k)
+                paring_needed_pos = num - k
+                paring_needed_neg = num + k
                 # if paring_needed_pos in value_freq_map:
                 #     results.append([num, paring_needed_pos])
                 # NOTE: Not sure why including both produces duplicates
@@ -69,6 +70,7 @@ Constraints:
 0 <= k <= 107
 """
 
+
 def test_ex1():
     """
     Example 1:
@@ -78,13 +80,14 @@ def test_ex1():
     Explanation: There are two 2-diff pairs in the array, (1, 3) and (3, 5).
     Although we have two 1s in the input, we should only return the number of unique pairs.
     """
-    nums = [3,1,4,1,5]
+    nums = [3, 1, 4, 1, 5]
     k = 2
     expected = 2
-    
+
     solver = Solution()
     actual = solver.findPairs(nums, k)
     assert actual == expected
+
 
 def test_ex2():
     """
@@ -94,13 +97,14 @@ def test_ex2():
     Output: 4
     Explanation: There are four 1-diff pairs in the array, (1, 2), (2, 3), (3, 4) and (4, 5).
     """
-    nums = [1,2,3,4,5]
+    nums = [1, 2, 3, 4, 5]
     k = 1
     expected = 4
 
     solver = Solution()
     actual = solver.findPairs(nums, k)
     assert actual == expected
+
 
 def test_ex3():
     """
@@ -110,7 +114,7 @@ def test_ex3():
     Output: 1
     Explanation: There is one 0-diff pair in the array, (1, 1).
     """
-    nums = [1,3,1,5,4]
+    nums = [1, 3, 1, 5, 4]
     k = 0
     expected = 1
 

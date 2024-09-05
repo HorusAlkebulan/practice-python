@@ -21,8 +21,8 @@
 from typing import List
 import heapq
 
-class KthLargest:
 
+class KthLargest:
     def __init__(self, k: int, nums: List[int]):
         # initialize with 0 already in place. actually not needed using internal heapq
         self.heap = []
@@ -41,7 +41,8 @@ class KthLargest:
         # return k'th largest. NOTE: nlargest returns high to low order
         kth_largest = heapq.nlargest(self.k, self.heap)
         return kth_largest[self.k - 1]
-        
+
+
 # Example 1:
 
 # Input:
@@ -54,11 +55,13 @@ def test_get_heap():
     print(contents)
     assert contents is not None
 
+
 # Output:
 # [null, 3, 3, 3, 5, 6]
 
 # Explanation:
 # KthLargest kthLargest = new KthLargest(3, [1, 2, 3, 3]);
+
 
 def test_add_3_5_6_7_8():
     nums = [1, 2, 3, 3]
@@ -79,6 +82,8 @@ def test_add_3_5_6_7_8():
     res = heap.add(8)
     print(f"res={res}")
     assert res == 6
+
+
 # Constraints:
 
 # 1 <= k <= 1000
@@ -90,6 +95,7 @@ def test_nums_length_0():
     res = heap.add(9)
     assert res == 9
 
+
 # -1000 <= nums[i] <= 1000
 # -1000 <= val <= 1000
 # There will always be at least k integers in the stream when you search for the kth integer.
@@ -99,6 +105,7 @@ def test_negative_nums():
     heap = KthLargest(k, nums)
     res = heap.add(-4)
     assert res == 3
+
 
 test_get_heap()
 test_add_3_5_6_7_8()

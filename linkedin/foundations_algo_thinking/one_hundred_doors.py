@@ -4,6 +4,7 @@
 # IDEA: would binary operations helpful here
 # brute force seem like effectively n * n = n ** 2, can we do better?
 
+
 def flip_doors(num_doors: int):
 
     # initial setup
@@ -24,6 +25,3 @@ def flip_doors(num_doors: int):
 
     print(f"big_o_count: {big_o_count}, door_state: {door_state}")
     return door_state
-
-
-

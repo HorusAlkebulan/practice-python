@@ -1,14 +1,13 @@
-
 import heapq
 
 
-class PriorityQueue():
+class PriorityQueue:
     def __init__(self) -> None:
         self.elements = []
 
     def is_empty(self) -> bool:
-        return (len(self.elements) == 0)
-    
+        return len(self.elements) == 0
+
     def put(self, priority, item) -> None:
         queue_element = (priority, item)
         heapq.heappush(self.elements, queue_element)
@@ -16,10 +15,10 @@ class PriorityQueue():
     def get(self) -> any:
         element_tuple = heapq.heappop(self.elements)
         return element_tuple[1]
-    
+
     def __str__(self) -> str:
         return f"size: {len(self.elements)}, elements: {str(self.elements)}"
-    
+
 
 def process_tasks(tasks):
     # Create a priority queue
@@ -35,6 +34,5 @@ def process_tasks(tasks):
 
     # Use a while loop with the exit condition that the priority queue is empty.
     # Within this loop, update result with items got from the priority queue.
-
 
     return ordered_task_list

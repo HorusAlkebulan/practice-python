@@ -59,11 +59,13 @@ def test_dequeue():
     assert item == documents[0]
     assert queue.size() == 2
 
-class Answer():
+
+class Answer:
     @staticmethod
     def printDocuments(documents):
         return printDocuments(documents)
-    
+
+
 def test_print_3_documents():
 
     documents = [("Report", 10), ("Essay", 5), ("Slides", 15)]

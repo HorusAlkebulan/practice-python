@@ -11,6 +11,7 @@
 
 # Explanation: The string "xyz" is the longest without duplicate characters.
 
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         # APPROACH 4: uses sliding window technique
@@ -29,12 +30,12 @@ class Solution:
 class SolutionV2:
     def lengthOfLongestSubstring(self, s: str) -> int:
 
-        # APPROACH 3: 
+        # APPROACH 3:
         # since limited set of chars, just create set of chars used
 
-        if len(s) == 0: 
+        if len(s) == 0:
             return 0
-        
+
         chars = list(s)
         char_map = set()
         for c in chars:
@@ -43,18 +44,17 @@ class SolutionV2:
         return result_len
 
 
-
 class SolutionV1:
     def lengthOfLongestSubstring(self, s: str) -> int:
 
         # s = "xxxx"
 
-        # APPROACH 2: 
+        # APPROACH 2:
         # since limited set of chars, just create hash map of all ascii chars used
 
-        if len(s) == 0: 
+        if len(s) == 0:
             return 0
-        
+
         chars = list(s)
         char_map = {}
         for c in chars:
@@ -70,13 +70,14 @@ class SolutionV1:
         result_len = len(result)
         return result_len
 
+
 class SolutionV0:
     def lengthOfLongestSubstring(self, s: str) -> int:
 
         # s = "xxxx"
 
-        # APPROACH 1: 
-        # (a) sort and find unique characters. 
+        # APPROACH 1:
+        # (a) sort and find unique characters.
         # (b) for each unique character, do the same for remaining subproblem working recursively?
 
         # Ex 2
@@ -87,7 +88,7 @@ class SolutionV0:
         #   subprob returns ""
         # get len of chars
         # return len as size
-        if len(s) == 0: 
+        if len(s) == 0:
             return 0
         chars = list(s)
         chars_sorted = sorted(chars)
@@ -97,13 +98,15 @@ class SolutionV0:
                 results.append(chars_sorted[i])
         result_len = len(results)
         return result_len
-    
+
+
 # Example 1:
 
 # Input: s = "zxyzxyz"
 # sorted = "xxyyzzz"
 # unique = "xyz"
 # index = "x", recursive subprob = "yz"
+
 
 def test_ex_1():
     s = "zxyzxyz"
@@ -112,11 +115,13 @@ def test_ex_1():
     expected = 3
     assert actual == expected, f"locals: {locals()}"
 
+
 # Example 2:
 
 # Input: s = "xxxx"
 
 # Output: 1
+
 
 def test_length_single_char():
     s = "xxxx"
@@ -131,6 +136,7 @@ def test_length_single_char():
 # 0 <= s.length <= 1000
 # s may consist of printable ASCII characters.
 
+
 def test_constraints_0():
     s = ""
     solver = Solution()
@@ -140,16 +146,8 @@ def test_constraints_0():
 
 
 def test_pwwkew():
-    s="pwwkew"
+    s = "pwwkew"
     solver = Solution()
     actual = solver.lengthOfLongestSubstring(s)
     expected = 3
     assert actual == expected, f"locals: {locals()}"
-
-
-
-
-
-
-
-

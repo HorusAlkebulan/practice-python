@@ -1,6 +1,7 @@
 # test_priority_queue.py
 from priority_queue import PriorityQueue
 
+
 def test_happy_path():
     pq = PriorityQueue()
     pq.put(2, "eat")

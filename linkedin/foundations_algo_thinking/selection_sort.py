@@ -1,4 +1,6 @@
 HR = "----------------------------------------------------------------------"
+
+
 def selection_sort(xs: list):
     xs_length = len(xs)
     print(HR)
@@ -15,15 +17,19 @@ def selection_sort(xs: list):
             if inner_val < inner_min_val:
                 inner_min_val = inner_val
                 inner_min_idx = inner_idx + idx
-                print(f"New inner minimum {inner_min_val} at inner index {inner_min_idx}")
+                print(
+                    f"New inner minimum {inner_min_val} at inner index {inner_min_idx}"
+                )
             else:
                 print(f"No new minimum at inner index {inner_idx}")
 
         # if idx is the same as current index, do nothing
-        if idx == inner_min_idx: 
+        if idx == inner_min_idx:
             print("No swap needed.")
         else:
-            print(f"Swap xs[{inner_min_idx}]={xs[inner_min_idx]} with xs[{idx}]={xs[idx]}")
+            print(
+                f"Swap xs[{inner_min_idx}]={xs[inner_min_idx]} with xs[{idx}]={xs[idx]}"
+            )
 
             # otherwise, do a swap between current and new minimum index
             temp = xs[inner_min_idx]
@@ -33,4 +39,3 @@ def selection_sort(xs: list):
         # increment outer loop
 
     return xs
-

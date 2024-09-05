@@ -1,48 +1,47 @@
 # min chars insert to make a palindrome
 
-# cac 
+# cac
 #  i
 #  j
 
 # cab --> cabbac
 def is_palindrome(str):
-  # str = cab
+    # str = cab
 
-  def recursive(str, i, j):
-    # base case
-    if i <= j:
-      return True
-    
-    op_count = 0 
+    def recursive(str, i, j):
+        # base case
+        if i <= j:
+            return True
 
-    if str[i] != str[j]:
-      # option 1: moving i++
-      i += 1
-      op_count += 1
-      is_pal_i = recursive(str, i, j)
+        op_count = 0
 
-      # if true, we can stop??
+        if str[i] != str[j]:
+            # option 1: moving i++
+            i += 1
+            op_count += 1
+            is_pal_i = recursive(str, i, j)
 
-      # option 2: moving j--
-      j -= 1
-      is_pal_j = recursive(str, i, j)
+            # if true, we can stop??
 
-      # compare wanting minimum
+            # option 2: moving j--
+            j -= 1
+            is_pal_j = recursive(str, i, j)
 
-      return False
-    i += 1
-    j -= 1
-    return recursive(str, i, j)
+            # compare wanting minimum
 
-  i = 0
-  j = len(str) - 1
-  return resursive(str, i, j)
+            return False
+        i += 1
+        j -= 1
+        return recursive(str, i, j)
+
+    i = 0
+    j = len(str) - 1
+    return resursive(str, i, j)
+
 
 def min_chars_palindrome(str):
-  pass
-  # 
-
-
+    pass
+    #
 
 
 def is_palindrome(s):
@@ -55,7 +54,7 @@ def is_palindrome(s):
     # Recur for the substring excluding the first and last characters
     return is_palindrome(s[1:-1])
 
+
 # Example usage
 print(is_palindrome("radar"))  # Output: True
 print(is_palindrome("hello"))  # Output: False
-

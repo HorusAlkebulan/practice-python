@@ -14,7 +14,6 @@ class Stack:
     def __init__(self):
         self.head: Node = None  # The head node of the linked list
         self.top: Node = None
-        
 
     def push(self, data):
         new_node = Node(data)
@@ -32,7 +31,7 @@ class Stack:
         # CASE 1: stack is empty
         if self.head is None:
             raise IndexError("Empty stack")
-        
+
         # CASE 2: stack has one item
         if self.head == self.top:
             old_top = self.top
@@ -61,7 +60,7 @@ class Stack:
         return self.top.data
 
     def isEmpty(self):
-        return (self.head is None)
+        return self.head is None
 
 
 # Define a function that checks if a string is a palindrome using a stack
@@ -82,20 +81,23 @@ class Answer:
     def isPalindrome(string):
         return isPalindrome(string)
 
+
 def test_is_empty_true():
-    
+
     stack = Stack()
     result = stack.isEmpty()
     expected = True
     assert result == expected
 
+
 def test_is_empty_false():
-    
+
     stack = Stack()
     stack.push("r")
     result = stack.isEmpty()
     expected = False
     assert result == expected
+
 
 @pytest.mark.skip(reason="Stack not finished")
 def test_ex1():
@@ -108,6 +110,7 @@ def test_ex1():
     expected = True
     assert result == expected
 
+
 def test_add_one_pop_one_is_empty():
 
     stack = Stack()
@@ -116,6 +119,7 @@ def test_add_one_pop_one_is_empty():
     assert top == "r"
     assert stack.isEmpty()
 
+
 def test_push_two_peek():
 
     stack = Stack()
@@ -123,4 +127,3 @@ def test_push_two_peek():
     stack.push("a")
     top = stack.peek()
     assert top == "a"
-    

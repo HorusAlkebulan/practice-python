@@ -46,10 +46,11 @@ Suggested:
 
 from typing import List
 
+
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         print(f"n={n}")
-        
+
         stack = []
         res = []
 
@@ -59,23 +60,23 @@ class Solution:
                 list_to_string = "".join(stack)
                 res.append(list_to_string)
                 return
-            
+
             # - only add open parens if open < n
             if open < n:
                 stack.append("(")
-                backtrack_gen(n, open+1, closed)
-                stack.pop()     # undo to try another tree branch
+                backtrack_gen(n, open + 1, closed)
+                stack.pop()  # undo to try another tree branch
 
             # - only add closing paren if closed < open
             if closed < open:
                 stack.append(")")
-                backtrack_gen(n, open, closed+1)
+                backtrack_gen(n, open, closed + 1)
                 stack.pop()
 
         # begin
         backtrack_gen(n, 0, 0)
         return res
-    
+
 
 def test_ex1():
     solver = Solution()

@@ -1,5 +1,6 @@
 # fizz_buzz.py
 
+
 def fizz_buzz(max_output_size):
 
     # every 3rd say fizz

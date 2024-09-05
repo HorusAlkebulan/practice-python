@@ -19,9 +19,7 @@ class OrderedList:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-            self.cache_map = {
-                val: new_node
-            }
+            self.cache_map = {val: new_node}
         else:
             # head -> tail
             # head -> tail -> new_node
@@ -66,7 +64,7 @@ class OrderedList:
     def remove(self, val: int) -> None:
         if self.head is None:
             return
-        
+
         remove_node = self.cache_map[val]
         # 1 -> 2 -> 4 -> 8
         prev_node = remove_node.prev
@@ -75,9 +73,9 @@ class OrderedList:
         next_node.prev = prev_node
         self.cache_map.pop(val)
 
-        
     def get_cache_map(self) -> dict:
         return self.cache_map
+
 
 def test_ordered_list_cache_map():
     olist = OrderedList()
@@ -96,7 +94,8 @@ def test_ordered_list_cache_map():
     }
     actual: dict = olist.get_cache_map()
     for key in actual.keys():
-        assert actual[key].value == expected[key].value    
+        assert actual[key].value == expected[key].value
+
 
 def test_ordered_list_add_1():
     olist = OrderedList()
@@ -108,6 +107,7 @@ def test_ordered_list_add_1():
     actual = olist.to_string()
     assert actual == expected
 
+
 def test_ordered_list_add_2():
     olist = OrderedList()
 
@@ -118,6 +118,7 @@ def test_ordered_list_add_2():
     expected = "1,2"
     actual = olist.to_string()
     assert actual == expected
+
 
 def test_ordered_list_add_3():
     olist = OrderedList()
@@ -131,11 +132,13 @@ def test_ordered_list_add_3():
     actual = olist.to_string()
     assert actual == expected
 
+
 def test_new_node():
     node = ListNode(1)
     actual = node.value
     expected = 1
     assert actual == expected
+
 
 def test_ordered_list_find_2nd():
     olist = OrderedList()
@@ -148,6 +151,7 @@ def test_ordered_list_find_2nd():
     expected = 2
     actual = olist.find_first(2).value
     assert actual == expected
+
 
 def test_ordered_remove_3rd():
     olist = OrderedList()
@@ -169,5 +173,6 @@ def test_ordered_remove_3rd():
     actual = olist.cache_map
     for key in actual.keys():
         assert actual[key].value == expected[key].value
+
 
 test_ordered_list_cache_map()

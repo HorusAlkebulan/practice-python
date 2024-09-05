@@ -1,5 +1,5 @@
 # node.py
-class Node():
+class Node:
     def __init__(self, data: any):
         self.data: any = data
         self.next: any = None
@@ -11,7 +11,7 @@ class Node():
         else:
             return f"[{self.data}]"
             # return f"[{self.data} {type(self.data)}]"
-        
+
     def __repr__(self) -> str:
         if self.data is None:
             return "[]"

@@ -8,21 +8,22 @@ from typing import List
 
 # An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
+
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
         # PROBLEM: if word gets put into anagram, remove it from future consideration
         # APPROACH: keep another hashmap that flags if index has been used in anagram list. Check this list before adding a word to another output list.
 
-        # Intermediate Steps: 
-        
+        # Intermediate Steps:
+
         anagram_map = {}
         word_used_flag = [False] * len(strs)
-        
+
         # Input: strs = ["act","pots","tops","cat","stop","hat"]
         #                 i ->
         #                 cur_word
-        #                       j -> 
+        #                       j ->
 
         # for each anagram group via going word by word
         for i in range(len(strs)):
@@ -30,9 +31,9 @@ class Solution:
             # creating hashmap keys for each string as sorted chars in word as key
             cur_word = strs[i]
             word_key = sorted(cur_word)
-            word_key = ''.join(word_key)
+            word_key = "".join(word_key)
 
-            # if exists key, get value, concatenate word to array list 
+            # if exists key, get value, concatenate word to array list
             # IF haven't used the word yet
             if word_key in anagram_map and word_used_flag[i] is False:
                 anagram_map[word_key].append(cur_word)
@@ -58,16 +59,17 @@ class Solution:
 
 # Example 1:
 def test_list_ex_1():
-    
+
     # Input: strs = ["act","pots","tops","cat","stop","hat"]
     # Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
-    strs = ["act","pots","tops","cat","stop","hat"]
+    strs = ["act", "pots", "tops", "cat", "stop", "hat"]
     # expected = [["hat"],["act", "cat"],["stop", "pots", "tops"]]
-    expected  = [["act", "cat"],["pots", "tops", "stop"],["hat"]]
+    expected = [["act", "cat"], ["pots", "tops", "stop"], ["hat"]]
 
     solver = Solution()
     actual = solver.groupAnagrams(strs)
     assert actual == expected, f"actual={actual},\n expected={expected}"
+
 
 # Example 2:
 # Input: strs = ["x"]
@@ -79,6 +81,7 @@ def test_single_char_ex_2():
     actual = solver.groupAnagrams(strs)
     assert actual == expected, f"actual={actual},\n expected={expected}"
 
+
 # Example 3:
 # Input: strs = [""]
 # Output: [[""]]
@@ -88,6 +91,7 @@ def test_empty_3():
     solver = Solution()
     actual = solver.groupAnagrams(strs)
     assert actual == expected, f"actual={actual},\n expected={expected}"
+
 
 # Constraints:
 

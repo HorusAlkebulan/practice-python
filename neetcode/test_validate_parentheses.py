@@ -41,14 +41,14 @@ class Solution:
                 paren_stack.append(char)
 
         # only valid if it stack is empty at this point
-        is_valid = (len(paren_stack) == 0)
+        is_valid = len(paren_stack) == 0
         return is_valid
 
     def isValidApproach2(self, s: str) -> bool:
         # Approach 2: use stack for chars, hashmap to pair valid opening for closing
         if len(s) < 1:
             return False
-        
+
         paren_stack = []
         valid_pairs_map = {
             "}": "{",
@@ -86,8 +86,6 @@ class Solution:
 
         return True
 
-            
-
     def isValidApproach1(self, s: str) -> bool:
         # APPROACH 1: create 3 stacks (append and pop), iterate through string, pushing with open, pop with closed
         paren_stack = []
@@ -118,10 +116,9 @@ class Solution:
                     return False
                 else:
                     square_stack.pop()
-        
+
         # we get this far, it is valid
         return True
-
 
 
 def test_ex1():
@@ -136,6 +133,7 @@ def test_ex1():
     expected = True
     assert actual == expected
 
+
 def test_ex2():
     """
     Input: s = "([{}])"
@@ -148,13 +146,14 @@ def test_ex2():
     expected = True
     assert actual == expected
 
+
 def test_ex3():
     """
     Input: s = "[(])"
 
     Output: false
     """
-    expected = False   
+    expected = False
     s = "[(])"
     solver = Solution()
     actual = solver.isValid(s)
