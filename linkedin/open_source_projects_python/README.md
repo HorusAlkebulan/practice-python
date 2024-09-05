@@ -36,3 +36,31 @@ Running a python file using poetry environment
 poetry run python ch02_pytest.py
 poetry run pytest test_ch02_pytest.py -s -v -l
 ```
+
+Check exit code of last command
+
+```sh
+echo $?
+```
+
+Sample command history
+
+```sh
+(open-source-projects-python-py3.10) (base) horus@Horuss-Mac-Studio-2023 open_source_projects_python % history
+  992  pytest -s
+  993  pytest -s
+  994  pytest -s
+  995  flake8 --version
+  996  flake8
+  997  black reminder.py
+  998  flake8
+  999  black ch02_pytest.py
+ 1000  black test_*.py
+ 1001  git add .
+ 1002  git commit -m "black formatting"
+ 1003  git push
+ 1004  pre-commit --version
+ 1005  pre-commit install
+ 1006  pre-commit run --all-files
+ 1007  git commit -a -m "test pre-commit"
+```
