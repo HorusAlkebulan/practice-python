@@ -64,3 +64,11 @@ Sample command history
  1006  pre-commit run --all-files
  1007  git commit -a -m "test pre-commit"
 ```
+
+running coverage
+
+```sh
+coverage run -m pytest .
+coverage report --omit=test_ch02_pytest.py
+coverage xml --omit=test_ch02_pytest.py
+```
