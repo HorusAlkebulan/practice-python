@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "open-source-projects-python"
+name = "reminder"
 version = "0.1.0"
 description = ""
 authors = ["Horus Alkebu-Lan <horusjr@me.com>"]
