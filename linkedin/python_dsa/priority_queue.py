@@ -10,12 +10,12 @@ class PriorityQueue():
         return (len(self.elements) == 0)
     
     def put(self, priority, item) -> None:
-        queue_item = (priority, item)
-        heapq.heappush(self.elements, queue_item)
+        queue_element = (priority, item)
+        heapq.heappush(self.elements, queue_element)
 
     def get(self) -> any:
-        item_tuple = heapq.heappop(self.elements)
-        return item_tuple[1]
+        element_tuple = heapq.heappop(self.elements)
+        return element_tuple[1]
     
     def __str__(self) -> str:
         return f"size: {len(self.elements)}, elements: {str(self.elements)}"

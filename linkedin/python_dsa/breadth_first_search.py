@@ -6,7 +6,7 @@ from queue_using_deque import Queue
 
 
 def bfs(maze: list, start_pos: tuple, goal_pos: tuple) -> list:
-    
+
     # initialize
     queue = Queue()
     queue.enqueue(start_pos)
@@ -22,7 +22,7 @@ def bfs(maze: list, start_pos: tuple, goal_pos: tuple) -> list:
         # is this the goal, return success path
         if current_cell == goal_pos:
             return get_path(predecessors, start_pos, current_cell)
-        
+
         # otherwise, queue up unvisited neighbors in order of 12 o'clock then clockwise
         else:
             directions = ["up", "right", "down", "left"]
