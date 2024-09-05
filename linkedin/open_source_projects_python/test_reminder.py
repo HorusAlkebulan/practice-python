@@ -54,4 +54,14 @@ def test_to_date():
 
 def test_to_date_with_exceptions():
     with pytest.raises(ValueError) as e:
-        app._to_date("1234")
+        _ = app._to_date("1234")
+
+@pytest.mark.skip()
+def test_skipping_a_test():
+    expected = dt.date(2022, 9, 1)
+    assert app._to_date("2022-09-01") == expected
+
+@pytest.mark.xfail(reason="This will fail until we create the mock class.")
+def test_expected_to_fail():
+    _ = app._to_date("1234")
+    
