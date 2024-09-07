@@ -25,23 +25,16 @@ def number_placement(numbers: list, operators: list) -> str:
         if current_op == "<" and operator_idx == 0:
             output_ls.append(str(numbers[low_idx]))
             low_idx += 1
-            output_ls.append(current_op)
-            operator_idx += 1
-            output_ls.append(str(numbers[high_idx]))
-            high_idx -= 1
         elif current_op == ">" and operator_idx == 0:
             output_ls.append(str(numbers[high_idx]))
             high_idx -= 1
-            output_ls.append(current_op)
-            operator_idx += 1
-            output_ls.append(str(numbers[low_idx]))
-            low_idx += 1
-        elif current_op == "<" and operator_idx > 0:
+
+        if current_op == "<":
             output_ls.append(current_op)
             operator_idx += 1
             output_ls.append(str(numbers[high_idx]))
             high_idx -= 1
-        elif current_op == ">" and operator_idx > 0:
+        elif current_op == ">":
             output_ls.append(current_op)
             operator_idx += 1
             output_ls.append(str(numbers[low_idx]))
