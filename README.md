@@ -49,3 +49,11 @@ pytest --cov=<your_module_or_package> --cov-report=term-missing --cov-fail-under
 pytest test.py --cov=sample.py --cov-report=
 coverage report -m
 ```
+
+## Code Formatting
+
+Run black and isort
+
+```sh
+isort . && black -v .
+```
