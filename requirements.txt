@@ -1,6 +1,7 @@
 # pip install -r requirements.txt
 # NOTE: Currently set for python==3.10
 black==24.8
+isort==5.13.2
 matplotlib==3.7
 notebook==6.5
 pytest==7.4
