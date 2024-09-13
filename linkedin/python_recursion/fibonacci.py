@@ -14,8 +14,12 @@ def fibonacci(n: int) -> int:
     return left + right
 
 
-def fibonacci_cached(n: int, cache: dict = {}) -> int:
+def fibonacci_cached(n: int, cache: dict = None) -> int:
+    # NOTE We don't do cache: dict = {} due to unexpected referencing
     print(f"LOCALS: {locals()}")
+    if cache is None:
+        cache = {}
+
     # base cases
     if n == 0:
         return 0
