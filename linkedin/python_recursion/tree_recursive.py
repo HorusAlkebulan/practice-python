@@ -43,10 +43,12 @@ def test_node():
     assert repr(node) == "[left: [data: 5], data: 10, right: [data: 15]]"
 
 
-# def test_traverse():
-#     node_list = Node("First")
-#     node_list = Node("Second", node_list)
-#     node_list = Node("Third", node_list)
+def test_traverse():
+    node_tree = Node("10")
+    left = Node("5")
+    node_tree.left = left
+    right = Node("15")
+    node_tree.right = right
 
-#     traverse_in_order(node_list)
-#     assert node_list is not None
+    traverse_in_order(node_tree)
+    assert node_tree is not None
